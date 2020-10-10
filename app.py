@@ -18,10 +18,10 @@ class UserAPI(Resource):
 
 class IndexView(Resource):
     def get(self):
-        return {"hello":"world"}
+        return {"hello": "world"}
 
 
 api.add_resource(UserAPI, '/users/<int:id>', endpoint='/user')
-api.add_resource(IndexView,'/',endpoint='index')
+api.add_resource(IndexView, '/', endpoint='index')
 #if __name__ == '__main__':
 #    app.run()
