@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 
 
-class UserAPI(Resource):
+'''class UserAPI(Resource):
     def get(self, uid):
         return {"user": uid}
 
@@ -36,4 +36,4 @@ class Publish(Resource):
             "title": title,
             "content": content
             # "result": float(args["rate"]*100)
-        }
+        }'''
