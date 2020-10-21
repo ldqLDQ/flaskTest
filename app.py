@@ -47,8 +47,20 @@ class Publish(Resource):
             # "result": float(args["rate"]*100)
         }
 
+
 api.add_resource(UserAPI, '/users/<int:uid>', endpoint='/user')
 api.add_resource(IndexView, '/', endpoint='index')
 api.add_resource(Publish, '/publish', endpoint='Publish')
+
+
+def after_request(resp):
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    resp.headers['Access-Control-Allow-Headers']= '*'
+    return resp
+
+
+app.after_request(after_request)
+
+
 #if __name__ == '__main__':
 #    app.run()
