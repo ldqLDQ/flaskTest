@@ -8,7 +8,7 @@ api = Api(app)
 
 class IndexView(Resource):
     def get(self):
-        return {"hello": "world"}
+        return {"hello": "world123"}
 
 
 class UserAPI(Resource):
