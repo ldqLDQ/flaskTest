@@ -1,6 +1,6 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
-# from users import *
+from users import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -11,7 +11,7 @@ class IndexView(Resource):
         return {"hello": "world123"}
 
 
-class UserAPI(Resource):
+'''class UserAPI(Resource):
     def get(self, uid):
         return {"user": uid}
 
@@ -46,9 +46,9 @@ class Publish(Resource):
             "content": content
             # "result": float(args["rate"]*100)
         }
+'''
 
-
-api.add_resource(UserAPI, '/users/<int:uid>', endpoint='/user')
+api.add_resource(UserAPI, '/users/<int:uid>', endpoint='user')
 api.add_resource(IndexView, '/', endpoint='index')
 api.add_resource(Publish, '/publish', endpoint='Publish')
 

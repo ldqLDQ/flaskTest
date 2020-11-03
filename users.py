@@ -2,7 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 
 
-'''class UserAPI(Resource):
+class UserAPI(Resource):
     def get(self, uid):
         return {"user": uid}
 
@@ -28,12 +28,12 @@ class Publish(Resource):
         # 将请求中传过来的参数存到args中
         args = parser.parse_args()
         # 将请求参数中的rate的值加以计算，并返回
-        username= args["username"]
-        title= args["title"]
-        content= args["content"]
+        username = args["username"]+"ok"
+        title = args["title"]+"ok"
+        content = args["content"]+"ok"
         return {
             "username": username,
             "title": title,
             "content": content
             # "result": float(args["rate"]*100)
-        }'''
+        }
