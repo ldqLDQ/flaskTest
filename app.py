@@ -55,7 +55,7 @@ api.add_resource(Publish, '/publish', endpoint='Publish')
 
 def after_request(resp):
     resp.headers['Access-Control-Allow-Origin'] = '*'
-    resp.headers['Access-Control-Allow-Headers']= '*'
+    resp.headers['Access-Control-Allow-Headers'] = '*'
     return resp
 
 
