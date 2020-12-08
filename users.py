@@ -2,6 +2,7 @@ from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from config import *
 import pymysql
+import json
 
 class UserAPI(Resource):
     def get(self, uid):
@@ -58,13 +59,29 @@ class Publish(Resource):
             "message": str1
             # "result": float(args["rate"]*100)
         }
+
+
 class Search(Resource):
     def display(self):
         db = pymysql.connect(host=Q_HOST, port=Q_PORT, user=Q_USER, passwd=Q_PASSWORD, db=Q_DB)
         cursor = db.cursor()
-        sql = ""
+        sql = "SELECT * FROM records"
+        cursor.execute(sql)
+        results = cursor.fetchall()
+        return results
+
+    def get(self):
+        #return {"error": "method not allowed"}
+        return self.display()
+
+    def post(self):
+        return 1
+
+
+class Join(Resource):
     def get(self):
         return {"error": "method not allowed"}
+
 
     def post(self):
         return 1
