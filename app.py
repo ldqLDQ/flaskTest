@@ -20,8 +20,8 @@ class TestSearch(Resource):
         return {"hello": "world123"}
 
     def post(self):
-        return {"1":{"tid": "19", "username": "zhangsan", "stime": "2020年111111:11", "etime": "2020111112:11",
-                 "location": "210", "remarks": "hswt", "joined": "0", "finished": "进行中"},
+        return {"1":{"tid": "19", "username": "zhangsan", "stime": "2020111111:11", "etime": "2020111112:11",
+                 "location": "210", "remarks": "hswt", "joined": "0", "finished": "1"},
                 "2":{"tid": "20", "username": "zhangsan", "stime": "2020111111:11", "etime": "2020111112:11",
                  "location": "210", "remarks": "hswt", "joined": "0", "finished": "0"},
                 "3":{"tid": "21", "username": "zhangsan", "stime": "2020111111:11", "etime": "2020111112:11",
