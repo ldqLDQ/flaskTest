@@ -34,7 +34,8 @@ api.add_resource(UserAPI, '/users/<int:uid>', endpoint='user')
 api.add_resource(IndexView, '/', endpoint='index')
 api.add_resource(Publish, '/publish', endpoint='Publish')
 api.add_resource(Search, '/search', endpoint='Search')
-api.add_resource(TestSearch,'/test/search',endpoint='testsearch')
+api.add_resource(Join, '/join', endpoint='Join')
+api.add_resource(TestSearch,'/test/search', endpoint='testsearch')
 
 
 def after_request(resp):
