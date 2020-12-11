@@ -118,3 +118,36 @@ class Join(Resource):
             "message": str1
             # "result": float(args["rate"]*100)
         }
+
+
+class MyPublished(Resource):
+    def get(self):
+        return 1
+
+    def post(self):
+        parser = reqparse.RequestParser()  # 新建parser实例
+        # 向parser实例中添加rate参数，并加以配置
+        # parser.add_argument('rate', type=float, help='Rate cannot be converted')
+        parser.add_argument('username')
+
+        # 将请求中传过来的参数存到args中
+        args = parser.parse_args()
+        # 将请求参数中的rate的值加以计算，并返回
+        username = pymysql.escape_string(args["username"])
+        db = pymysql.connect(host=Q_HOST, port=Q_PORT, user=Q_USER, passwd=Q_PASSWORD, db=Q_DB)
+        cursor = db.cursor()
+        sql = "SELECT * FROM records where username = \'%s\'" % username
+        cursor.execute(sql)
+        lis = cursor.fetchall()
+        dat = {}
+        num = 0
+        for i in lis:
+            dat0 = {"tid": i[0], "username": i[1], "stime": i[2], "etime": i[3], "location": i[4], "remarks": i[5], "joined": i[6], "finished": "已完成"}
+            dat[num]=dat0
+            num += 1
+        return {
+            "result": "ok",
+            "sql": sql,
+            "data": dat
+            # "result": float(args["rate"]*100)
+        }
