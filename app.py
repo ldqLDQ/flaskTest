@@ -101,7 +101,7 @@ api.add_resource(Publish, '/publish', endpoint='Publish')
 api.add_resource(Search, '/search', endpoint='Search')
 api.add_resource(Join, '/join', endpoint='Join')
 api.add_resource(MyPublished, '/my/published', endpoint='MyPublished')
-#api.add_resource(MyJoined, '/my/joined', endpoint='MyJoined')
+api.add_resource(MyJoined, '/my/joined', endpoint='MyJoined')
 api.add_resource(TestSearch, '/test/search', endpoint='testsearch')
 
 
