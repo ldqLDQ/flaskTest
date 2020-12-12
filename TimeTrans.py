@@ -1,8 +1,4 @@
 import time
-from flask import Flask
-from flask_restful import Resource, Api, reqparse
-from config import *
-import pymysql
 
 
 def unix_time(dt):
