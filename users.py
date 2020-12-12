@@ -132,12 +132,14 @@ class Join(Resource):
         str1 = str(tid)+pname+pmessage
         db = pymysql.connect(host=Q_HOST, port=Q_PORT, user=Q_USER, passwd=Q_PASSWORD, db=Q_DB)
         cursor = db.cursor()
+        sql = "UPDATE records SET joined=joined+1 WHERE tid=%d" % tid
+        cursor.execute(sql)
         sql = "SELECT * FROM config"
         cursor.execute(sql)
         pid = cursor.fetchone()[2]
-        sql = "UPDATE config SET pnum=%d WHERE pnum = %d" % (pid+1, pid)
-        pid += 1
+        sql = "UPDATE config SET pnum=pnum+1"
         cursor.execute(sql)
+        pid += 1
         sql = "INSERT INTO participants (pid, pname, pmessage, tid)" \
               " VALUES " \
               "(%d,\"%s\",\"%s\",%d)" % (pid, pname, pmessage, tid)
