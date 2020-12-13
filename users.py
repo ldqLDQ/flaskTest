@@ -97,7 +97,7 @@ class Search(Resource):
         # 转换时间格式
         db = pymysql.connect(host=Q_HOST, port=Q_PORT, user=Q_USER, passwd=Q_PASSWORD, db=Q_DB)
         cursor = db.cursor()
-        sql = "select * from records where location like '%%%s%%' and(( stime<%d and etime>%d)or %d=-1)" % (
+        sql = "select * from records where location like '%%%s%%' and(( stime<=%d and etime>=%d)or %d=-1)" % (
         location, Unix_Time, Unix_Time, Unix_Time)
         cursor.execute(sql)
         # 筛选符合条件的数据
