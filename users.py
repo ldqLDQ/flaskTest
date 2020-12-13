@@ -1,8 +1,6 @@
-from flask import Flask
-from flask_restful import Resource, Api, reqparse
+from flask_restful import Resource, reqparse
 from config import *
 import pymysql
-import json
 from TimeTrans import *
 
 
@@ -41,6 +39,11 @@ class Publish(Resource):
         unix_t_s = unix_time(stime)
         unix_t_e = unix_time(etime)
         # 转换时间格式
+        if unix_t_s > unix_t_e:
+            return{
+                "result": "failed",
+                "message": "结束时间不能早于开始时间"
+            }
         str1 = username+stime+etime+location+remarks
         db = pymysql.connect(host=Q_HOST, port=Q_PORT, user=Q_USER, passwd=Q_PASSWORD, db=Q_DB)
         cursor = db.cursor()
