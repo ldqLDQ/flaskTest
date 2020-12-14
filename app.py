@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_restful import Resource, Api, reqparse
 from users import *
+from publish import *
+from search import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -16,6 +18,10 @@ class IndexView(Resource):
 
 
 class TestSearch(Resource):
+    """
+    Author: ldqLDQ
+    功能: 服务器返回测试数据
+    """
     def get(self):
         return {"hello": "world123"}
 
@@ -103,12 +109,14 @@ api.add_resource(Join, '/join', endpoint='Join')
 api.add_resource(Detail, '/detail/<int:tid>', endpoint='Detail')
 api.add_resource(MyPublished, '/my/published', endpoint='MyPublished')
 api.add_resource(MyJoined, '/my/joined', endpoint='MyJoined')
-api.add_resource(TestSearch, '/test/search', endpoint='testsearch')
+# api.add_resource(TestSearch, '/test/search', endpoint='testsearch')
+# 不再返回测试数据
 
 
 def after_request(resp):
     resp.headers['Access-Control-Allow-Origin'] = '*'
     resp.headers['Access-Control-Allow-Headers'] = '*'
+    # 允许跨域访问
     return resp
 
 
