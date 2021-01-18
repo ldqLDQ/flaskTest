@@ -3,6 +3,7 @@ from flask_restful import Resource, Api, reqparse
 from users import *
 from publish import *
 from search import *
+from ks import *
 
 app = Flask(__name__)
 api = Api(app)
@@ -109,6 +110,7 @@ api.add_resource(Join, '/join', endpoint='Join')
 api.add_resource(Detail, '/detail/<int:tid>', endpoint='Detail')
 api.add_resource(MyPublished, '/my/published', endpoint='MyPublished')
 api.add_resource(MyJoined, '/my/joined', endpoint='MyJoined')
+api.add_resource(ks, '/ks', endpoint='ks')
 # api.add_resource(TestSearch, '/test/search', endpoint='testsearch')
 # 不再返回测试数据
 
